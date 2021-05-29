@@ -1,4 +1,4 @@
 export const getSearchResults = (query) => {
   return fetch(`https://api.github.com/search/repositories?q=${query}`)
-            .then((response) => console.log(response.json()))
+            .then((response) => response.json())
 }
