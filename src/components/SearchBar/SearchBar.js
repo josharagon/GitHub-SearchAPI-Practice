@@ -1,6 +1,5 @@
 import React from 'react';
 import './SearchBar.css'
-import searchGlass from '../../img/searchGlass.png'
 
 
 const SearchBar = ({ searchValue, setSearchValue, setSearchResults, getSearchResults, setSearched, setError }) => {
@@ -10,7 +9,7 @@ const SearchBar = ({ searchValue, setSearchValue, setSearchResults, getSearchRes
       <input type='search' value={searchValue} placeholder='Find a GitHub repository'
         onChange={(e) => setSearchValue(e.target.value)}>
       </input>
-      <button type='submit'
+      <button className='search-icon' type='submit'
         onClick={async(e) => {
           e.preventDefault()
           setSearched(true);
@@ -18,7 +17,7 @@ const SearchBar = ({ searchValue, setSearchValue, setSearchResults, getSearchRes
             .then((results) => setSearchResults(results.items))
             .catch((error) => setError(error))
         }}>
-        <img src={searchGlass}></img>
+        <img src={`../assets/searchGlass.png`}></img>
       </button>
     </form>
   )

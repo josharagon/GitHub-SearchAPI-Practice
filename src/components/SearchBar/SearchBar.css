@@ -10,7 +10,7 @@ input {
   padding-left: 50px;
 }
 
-button {
+.search-icon {
   position: absolute;
   top: 53%;
   left: 25%;
