@@ -1,0 +1,25 @@
+input {
+  width: 50%;
+  height: 3em;
+  border-radius: 100px 100px 100px 100px;
+  border: none;
+  position: relative;
+  background-color: black;
+  color: rgb(160, 160, 160);
+  outline: none;
+  padding-left: 50px;
+}
+
+button {
+  position: absolute;
+  top: 46.3%;
+  left: 25%;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img{
+  height: 35px;
+}

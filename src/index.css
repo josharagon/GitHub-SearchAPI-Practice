@@ -1,0 +1,13 @@
+html, body, #root {
+  height: 95%;
+  background-color: rgb(85,85,85);
+  font-family: 'PT Sans', sans-serif;
+  color: rgb(255, 255, 255);
+}
+
+#root{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
