@@ -1,0 +1,9 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+  overflow-Y: scroll;
+  align-self: center;
+  justify-content: center;
+}

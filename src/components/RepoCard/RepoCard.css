@@ -1,0 +1,35 @@
+.repo-card {
+  width: 12em;
+  height: 20em;
+  background-color: rgb(85,85,85);
+  margin:10px;
+  border-radius: 5%;
+  box-shadow: 0 1px 9px 0 rgb(0 0 0 / 45%);
+  font-size: 15px;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+.repo-card:hover {
+  transform: scale(1.05);
+}
+
+.bottom-section {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.forks-stars {
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
+  font-size: 1em;
+}
+
+.forks-stars > p {
+  margin: 2px;
+}
