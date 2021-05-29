@@ -1,0 +1,11 @@
+html, body, #root {
+  height: 100%;
+  background-color: rgb(85,85,85);
+  font-family: 'Montserrat', sans-serif;
+  color: rgb(255, 255, 255);
+}
+
+#root{
+  text-align: center;
+
+}
