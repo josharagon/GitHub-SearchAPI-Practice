@@ -6,6 +6,7 @@ const CardContainer = ({ searchResults }) => {
   let allResults = searchResults.map(result => {
     return <RepoCard repo={result} key={result.full_name} />
   })
+  searchResults.sort((a,b) => b.stargazers_count-a.stargazers_count)
   return (
     <div className='card-container'>
       {!allResults.length && <h1>Loading</h1>}
