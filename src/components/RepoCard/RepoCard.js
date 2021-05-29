@@ -2,6 +2,7 @@ import './RepoCard.css'
 
 const RepoCard = ({ repo }) => {
 
+  let path = `../assets/${repo.language}.png`
   return (
     <div className='repo-card'>
       <h4>{repo.name}</h4>
@@ -11,7 +12,7 @@ const RepoCard = ({ repo }) => {
       </div>
       <h4 className='description'>{repo.description}</h4>
       <div className='bottom-section'>
-        <p>{repo.language}</p>
+        <img src={`../assets/${repo.language}.png`}></img>
         <p title='watchers'>👀 : {repo.watchers}</p>
       </div>
     </div>

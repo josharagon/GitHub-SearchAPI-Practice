@@ -3,13 +3,19 @@ import RepoCard from '../RepoCard/RepoCard.js'
 
 
 const CardContainer = ({ searchResults }) => {
-  let allResults = searchResults.map(result => {
+  let allResults;
+  if (searchResults.length){
+    allResults = searchResults.map(result => {
     return <RepoCard repo={result} key={result.full_name} />
-  })
-  searchResults.sort((a,b) => b.stargazers_count-a.stargazers_count)
+  }) 
+  } else {
+    allResults = false;
+  }
+  // searchResults.sort((a,b) => b.stargazers_count-a.stargazers_count)
   return (
     <div className='card-container'>
-      {!allResults.length && <h1>Loading</h1>}
+      {typeof allResults === "boolean" && <h1 className='no-result'>No search results</h1>}
+
       {allResults}
     </div>
   )

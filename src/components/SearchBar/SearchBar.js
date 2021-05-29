@@ -3,7 +3,7 @@ import './SearchBar.css'
 import searchGlass from '../../img/searchGlass.png'
 
 
-const SearchBar = ({ searchValue, setSearchValue, setSearchResults, getSearchResults, setSearched }) => {
+const SearchBar = ({ searchValue, setSearchValue, setSearchResults, getSearchResults, setSearched, setError }) => {
 
   return (
     <form>
@@ -11,11 +11,12 @@ const SearchBar = ({ searchValue, setSearchValue, setSearchResults, getSearchRes
         onChange={(e) => setSearchValue(e.target.value)}>
       </input>
       <button type='submit'
-        onClick={(e) => {
+        onClick={async(e) => {
           e.preventDefault()
-          getSearchResults(searchValue)
-            .then((results) => setSearchResults(results.items))
           setSearched(true);
+          await getSearchResults(searchValue)
+            .then((results) => setSearchResults(results.items))
+            .catch((error) => setError(error))
         }}>
         <img src={searchGlass}></img>
       </button>

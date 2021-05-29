@@ -8,8 +8,9 @@ import CardContainer from '../CardContainer/CardContainer';
 
 const App = () => {
   const [searchValue, setSearchValue] = useState('')
-  const [searchResults, setSearchResults] = useState([])
+  const [searchResults, setSearchResults] = useState(null)
   const [searched, setSearched] = useState(false)
+  const [error, setError] = useState('')
   if (!searched) {
     return (
       <>
@@ -23,7 +24,11 @@ const App = () => {
         />
       </>
     )
-  } else {
+  } else if (searchResults === null) {
+    return (
+    <h1>Loading...</h1>
+    )
+  } else if(searchResults){
     return (
       <CardContainer searchResults={searchResults}/>
     )
