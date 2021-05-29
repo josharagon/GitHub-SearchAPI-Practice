@@ -1,6 +1,6 @@
 import React from 'react';
 import './SearchBar.css'
-import searchGlass from '../../searchGlass.png'
+import searchGlass from '../../img/searchGlass.png'
 
 
 const SearchBar = ({ searchValue, setSearchValue, setSearchResults, getSearchResults, setSearched }) => {

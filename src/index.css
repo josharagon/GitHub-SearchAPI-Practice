@@ -1,8 +1,9 @@
 html, body, #root {
-  height: 95%;
+  height: 100%;
   background-color: rgb(85,85,85);
   font-family: 'PT Sans', sans-serif;
   color: rgb(255, 255, 255);
+  overflow: hidden;
 }
 
 #root{

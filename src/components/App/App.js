@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 import SearchBar from '../SearchBar/SearchBar.js';
-import { getSearchResults } from '../../api.js'
+import { getSearchResults } from '../../api.js';
+import CardContainer from '../CardContainer/CardContainer';
 
 
 
@@ -14,7 +15,6 @@ const App = () => {
       <>
         <h1>RepoFinder</h1>
         <SearchBar
-          getSearchResults={getSearchResults}
           searchValue={searchValue}
           setSearchValue={setSearchValue}
           getSearchResults={getSearchResults}
@@ -24,14 +24,8 @@ const App = () => {
       </>
     )
   } else {
-    let allResults = searchResults.map(result => {
-      console.log(result)
-    })
     return (
-      <>
-        <h1>Working</h1>
-        {allResults}
-      </>
+      <CardContainer searchResults={searchResults}/>
     )
   }
 }
