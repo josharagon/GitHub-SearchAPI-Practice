@@ -11,6 +11,8 @@ import { Route, Switch } from 'react-router-dom'
 
 const App = () => {
   const [searchValue, setSearchValue] = useState('')
+  const [currentRepo, setCurrentRepo] = useState({})
+
 
   return (
     <>
@@ -27,21 +29,20 @@ const App = () => {
           )
         }} />
 
-        <Route exact path='/:query' render={( { match }) => {
+        <Route exact path='/:query' render={({ match }) => {
           return (
             <>
-              <CardContainer searchValue={match.params.query} getSearchResults={getSearchResults}/>
+              <CardContainer searchValue={match.params.query}
+                getSearchResults={getSearchResults}
+                setCurrentRepo={setCurrentRepo}
+              />
             </>
           )
         }} />
 
-        {/* <h1>Loading...</h1>
 
-
-    <CardContainer searchResults={searchResults} setSearchResults={setSearchResults} /> */}
-
-        <Route exact path='/:id' render={({ match }) =>
-          <SingleRepoView id={match.params.id} repo={match.params} />
+        <Route exact path='/repository/:id' render={({ match }) =>
+          <SingleRepoView id={match.params.id} currentRepo={currentRepo} />
         } />
       </Switch>
     </>

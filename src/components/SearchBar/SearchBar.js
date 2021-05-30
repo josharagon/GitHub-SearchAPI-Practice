@@ -1,22 +1,16 @@
 import React from 'react';
 import './SearchBar.css';
-import {withRouter, BrowserRouter } from 'react-router-dom';
+import { withRouter, BrowserRouter } from 'react-router-dom';
 
 
 
-const SearchBar = ({ searchValue, setSearchValue, setSearchResults, getSearchResults, setSearched, setError }, props) => {
-
-
+const SearchBar = ({ searchValue, setSearchValue }) => {
+  
   const searchRepositories = (e) => {
-    // if (searchValue) {
+    if (searchValue) {
       e.preventDefault()
       document.location = searchValue
-    //   setSearched(true);
-    //   document.location = searchValue   
-    //   await getSearchResults(searchValue)
-    //     .then((results) => setSearchResults(results.items))
-    //     .catch((error) => setError(error))
-    //    }
+    }
   }
 
   return (
