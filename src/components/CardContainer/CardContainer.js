@@ -11,6 +11,7 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
   const [repoLanguages, setRepoLanguages] = useState([])
   const [filterOrder, setFilterOrder] = useState('')
   const [filterLanguage, setFilterLanguage] = useState('')
+  const [locked, setLocked] = useState(true)
 
   useEffect(async () => {
     if (!searchResults) {
@@ -37,9 +38,12 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
 
   const filterBy = (e, lang, sort) => {
     e.preventDefault()
+    if(!locked) {
     getSearchResults(searchValue, lang, sort)
       .then((results) => setSearchResults(results.items))
       .catch((error) => setError(error))
+      setLocked(true);
+    }
   }
 
 
@@ -52,14 +56,18 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
       </Link>
       <div className="filter-row">
         <div className="filter-forms">
-          <form className="dropdown" value={filterOrder} onChange={(e) => setFilterOrder(e.target.value)}>
+          <form className="dropdown" value={filterOrder} onChange={(e) =>{ 
+            setFilterOrder(e.target.value)
+            setLocked(false)}}>
             <label>Filter Order:</label>
             <select name="filter" id="filter">
               <option defaultValue value="">Best Match</option>
               <option value="stars">Starred Count</option>
             </select>
           </form>
-          <form className="dropdown" value={filterLanguage} onChange={(e) => setFilterLanguage(e.target.value)}>
+          <form className="dropdown" value={filterLanguage} onChange={(e) => {
+            setFilterLanguage(e.target.value) 
+            setLocked(false)}}>
             <label>Language:</label>
             <select name="language" id="language">
               <option defaultValue value="">All</option>
