@@ -5,11 +5,13 @@ import { useEffect } from 'react';
 
 const RepoCard = ({ repo, setCurrentRepo }) => {
 
+ const changeRepo = () => {
+  setCurrentRepo(repo)
+}
+ 
+
   return (
-    <Link to={`/repository/${repo.id}`} onClick={
-      useEffect(() => {
-        setCurrentRepo(repo)
-      })}>
+    <Link to={`/repository/${repo.id}`} onClick={ () => changeRepo()}>
       <div className='repo-card'>
         <h4>{repo.name}</h4>
         <div className='forks-stars'>

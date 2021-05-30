@@ -13,7 +13,6 @@ const App = () => {
   const [searchValue, setSearchValue] = useState('')
   const [currentRepo, setCurrentRepo] = useState({})
 
-
   return (
     <>
       <Switch>
@@ -28,7 +27,6 @@ const App = () => {
             </>
           )
         }} />
-
         <Route exact path='/:query' render={({ match }) => {
           return (
             <>
@@ -39,10 +37,8 @@ const App = () => {
             </>
           )
         }} />
-
-
         <Route exact path='/repository/:id' render={({ match }) =>
-          <SingleRepoView id={match.params.id} currentRepo={currentRepo} />
+          <SingleRepoView id={match.params.id} repo={currentRepo} />
         } />
       </Switch>
     </>
