@@ -1,8 +1,5 @@
 import React from 'react';
 import './SearchBar.css';
-import { withRouter, BrowserRouter } from 'react-router-dom';
-
-
 
 const SearchBar = ({ searchValue, setSearchValue }) => {
   

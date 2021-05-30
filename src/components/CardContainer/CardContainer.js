@@ -2,6 +2,7 @@ import './CardContainer.css';
 import RepoCard from '../RepoCard/RepoCard.js';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { handleError } from '@vue/runtime-core';
 
 
 const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo }) => {
@@ -12,12 +13,15 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
   const [filterOrder, setFilterOrder] = useState('')
   const [filterLanguage, setFilterLanguage] = useState('')
   const [locked, setLocked] = useState(true)
+  const [noResults, setNoResults] = useState(false);
 
   useEffect(async () => {
     if (!searchResults) {
       await getSearchResults(searchValue)
         .then((results) => setSearchResults(results.items))
         .catch((error) => setError(error))
+      setNoResults((searchResults.length > 0) ? false : true)
+      console.log(searchResults.length > 0)
     }
   })
 
@@ -38,11 +42,21 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
 
   const filterBy = (e, lang, sort) => {
     e.preventDefault()
-    if(!locked) {
-    getSearchResults(searchValue, lang, sort)
-      .then((results) => setSearchResults(results.items))
-      .catch((error) => setError(error))
+    if (!locked) {
+      getSearchResults(searchValue, lang, sort)
+        .then((results) => setSearchResults(results.items))
+        .catch((error) => setError(error))
       setLocked(true);
+    }
+  }
+
+  const handelNoResults = () => {
+    if (noResults === true) {
+      return (
+        <h1>No Results Found </h1>
+      )
+    } else {
+      return
     }
   }
 
@@ -56,18 +70,21 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
       </Link>
       <div className="filter-row">
         <div className="filter-forms">
-          <form className="dropdown" value={filterOrder} onChange={(e) =>{ 
+          <form className="dropdown" value={filterOrder} onChange={(e) => {
             setFilterOrder(e.target.value)
-            setLocked(false)}}>
+            setLocked(false)
+          }}>
             <label>Filter Order:</label>
             <select name="filter" id="filter">
               <option defaultValue value="">Best Match</option>
               <option value="stars">Starred Count</option>
+              <option value="forks">Fork Count</option>
             </select>
           </form>
           <form className="dropdown" value={filterLanguage} onChange={(e) => {
-            setFilterLanguage(e.target.value) 
-            setLocked(false)}}>
+            setFilterLanguage(e.target.value)
+            setLocked(false)
+          }}>
             <label>Language:</label>
             <select name="language" id="language">
               <option defaultValue value="">All</option>
@@ -80,6 +97,7 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
       <div className='card-container'>
         {!allResults && <h1 className='no-result'>Loading</h1>}
         {allResults}
+        {handelNoResults()}
       </div>
     </>
   )
