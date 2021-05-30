@@ -15,13 +15,17 @@ input {
   padding-left: 50px;
 }
 
-.search-button {
+.rf-button-home {
   width: 5em;
   height: 2em;
   align-self: center;
   margin: 40px;
   border-radius: 10%;
   border: none;
+}
+.rf-button-home:hover {
+  transform: scale(1.09);
+  cursor: pointer;
 }
 
 .search-icon{

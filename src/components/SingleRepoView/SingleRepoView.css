@@ -29,3 +29,7 @@
   align-self: flex-start;
 }
 
+.go-back {
+  text-align: left;
+  cursor: pointer;
+}
