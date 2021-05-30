@@ -1,3 +1,8 @@
+form {
+  display: flex;
+  flex-direction: column;
+}
+
 input {
   width: 50%;
   height: 3em;
@@ -10,16 +15,22 @@ input {
   padding-left: 50px;
 }
 
-.search-icon {
+.search-button {
+  width: 5em;
+  height: 2em;
+  align-self: center;
+  margin: 40px;
+  border-radius: 10%;
+  border: none;
+}
+
+.search-icon{
+  height: 35px;
   position: absolute;
-  top: 53%;
-  left: 25%;
+  top: 48%;
+  left: 25.5%;
   background-color: transparent;
   border: none;
   display: flex;
   -webkit-tap-highlight-color: transparent;
-}
-
-img{
-  height: 35px;
 }
