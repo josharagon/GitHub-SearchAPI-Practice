@@ -17,7 +17,7 @@ const SearchBar = ({ searchValue, setSearchValue }) => {
     <form>
       <div>
         <input type='search' required value={searchValue} placeholder='Find a GitHub repository'
-          onChange={(e) => setSearchValue(e.target.value)}>
+          onChange={(e) => setSearchValue(e.target.value.replace(/[^\w\s]/gi, ""))}>
         </input>
         <img className='search-icon' src={`../assets/searchGlass.png`}></img>
       </div>
