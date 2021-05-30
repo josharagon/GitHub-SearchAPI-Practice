@@ -21,7 +21,7 @@ const SearchBar = ({ searchValue, setSearchValue }) => {
         </input>
         <img className='search-icon' src={`../assets/searchGlass.png`}></img>
       </div>
-      <button className='search-button'
+      <button className='rf-button-home'
         type='submit'
         onClick={(event) => searchRepositories(event)}
       >

@@ -7,3 +7,17 @@
   align-self: center;
   justify-content: center;
 }
+
+.dropdown {
+  margin: 0 15px 5px 15px;
+}
+
+.filter-row {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.filter-forms{
+  display: flex;
+  justify-content: space-evenly;
+}

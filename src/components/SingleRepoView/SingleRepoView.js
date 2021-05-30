@@ -1,16 +1,17 @@
 import React from 'react';
 import './SingleRepoView.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 
 const SingleRepoView = ({ repo }) => {
+  let history = useHistory();
 
   return (
-
     <div className='single-repo-view'>
       <Link to='/'>
-        <h1>RepoFind</h1>
+        <h1 className="header">RepoFinder</h1>
       </Link>
+      <h4 className="go-back" onClick={() => history.goBack()}>Go Back ←</h4>
       <div className='top-section'>
         <div className='user-info'>
           <img className='avatar' src={repo.owner.avatar_url}></img>
@@ -30,7 +31,6 @@ const SingleRepoView = ({ repo }) => {
         </div>
       </div>
       <p>Description: {repo.description}</p>
-
     </div>
   )
 }
