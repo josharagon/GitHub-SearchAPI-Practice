@@ -1,22 +1,34 @@
 import './CardContainer.css';
 import RepoCard from '../RepoCard/RepoCard.js';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 
-const CardContainer = ({ searchResults }) => {
+const CardContainer = ( { searchValue, setError, getSearchResults }) => {
   let allResults;
-  if (searchResults.length) {
+  // const defaultSearch = [... searchResults]
+  // let starSort = [... searchResults];
+  // let sortedStars = starSort.sort((a,b) => b.stargazers_count-a.stargazers_count);
+  const [searchResults, setSearchResults] = useState('')
+  useEffect(async() => { 
+    if(!searchResults){
+      await getSearchResults(searchValue)
+        .then((results) => setSearchResults(results.items))
+        .catch((error) => setError(error))}
+  })
+
+  if (searchResults) {
     allResults = searchResults.map(result => {
       return <RepoCard repo={result} key={result.full_name} />
     })
-  } else {
-    allResults = false;
   }
-  // searchResults.sort((a,b) => b.stargazers_count-a.stargazers_count)
   return (
     <>
-      <h1 onClick={() => window.location.reload()}>RepoFind</h1>
+      <Link to='/'>
+        <h1>RepoFind</h1>
+      </Link>
       <div className='card-container'>
-        {typeof allResults === "boolean" && <h1 className='no-result'>No search results</h1>}
+        {!allResults && <h1 className='no-result'>No search results</h1>}
         {allResults}
       </div>
     </>

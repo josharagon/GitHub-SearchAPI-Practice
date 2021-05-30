@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   height: 100%;
   width: 100%;
-  overflow-Y: scroll;
+  overflow-Y: auto;
   align-self: center;
   justify-content: center;
 }

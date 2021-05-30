@@ -1,12 +1,16 @@
 .repo-card {
   width: 12em;
-  height: 20em;
+  height: fit-content;
+  min-height: 25em;
   background-color: rgb(85,85,85);
   margin:10px;
-  border-radius: 5%;
   box-shadow: 0 1px 9px 0 rgb(0 0 0 / 45%);
   font-size: 15px;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  overflow-wrap: break-word;
 }
 
 a {

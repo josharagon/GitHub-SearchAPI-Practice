@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 
 const RepoCard = ({ repo }) => {
 
-  let path = `../assets/${repo.language}.png`
+
+  console.log(repo)
   return (
-    <Link to={`${repo.full_name}`}>
+    <Link to={`/${repo.id}`}>
     <div className='repo-card'>
       <h4>{repo.name}</h4>
       <div className='forks-stars'>
