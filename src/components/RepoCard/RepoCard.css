@@ -2,6 +2,7 @@
   width: 12em;
   height: fit-content;
   min-height: 25em;
+  max-height: 25em;
   background-color: rgb(85,85,85);
   margin:10px;
   box-shadow: 0 1px 9px 0 rgb(0 0 0 / 45%);
@@ -11,6 +12,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   overflow-wrap: break-word;
+  padding: 10px;
 }
 
 a {
