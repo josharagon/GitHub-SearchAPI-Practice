@@ -36,7 +36,7 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
   const handelNoResults = () => {
     if (noResults === true) {
       return (
-        <h1>No Results Found </h1>
+        <h1 className="error-loading">No results found, <Link to="/">try a different search.</Link></h1>
       )
     } else {
       return null
@@ -98,7 +98,7 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
         <button className='rf-button' onClick={(e) => filterBy(e, filterLanguage, filterOrder)}>Filter</button>
       </div>
       <div className='card-container'>
-        {!allResults && !noResults &&<h1 className='no-result'>Loading</h1>}
+        {!allResults && !noResults &&<h1 className='error-loading'>Loading</h1>}
         {allResults}
         {handelNoResults()}
       </div>

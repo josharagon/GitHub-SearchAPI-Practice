@@ -8,6 +8,11 @@
   justify-content: center;
 }
 
+.error-loading {
+  align-self: center;
+  font-size: 36px;
+}
+
 .dropdown {
   margin: 0 15px 5px 15px;
 }
