@@ -3,8 +3,8 @@ import './App.css';
 import SearchBar from '../SearchBar/SearchBar.js';
 import { getSearchResults } from '../../api.js';
 import CardContainer from '../CardContainer/CardContainer';
-import SingleRepoView from '../SingleRepoView/SingleRepoView.js'
-import { Route, Switch } from 'react-router-dom'
+import SingleRepoView from '../SingleRepoView/SingleRepoView.js';
+import { Route, Switch } from 'react-router-dom';
 
 
 

@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom';
 const CardContainer = ({ searchValue, error, setError, getSearchResults, setCurrentRepo }) => {
   let allResults;
   let languageOptions;
-  const [searchResults, setSearchResults] = useState('')
-  const [repoLanguages, setRepoLanguages] = useState([])
-  const [filterOrder, setFilterOrder] = useState('')
-  const [filterLanguage, setFilterLanguage] = useState('')
-  const [locked, setLocked] = useState(true)
+  const [searchResults, setSearchResults] = useState('');
+  const [repoLanguages, setRepoLanguages] = useState([]);
+  const [filterOrder, setFilterOrder] = useState('');
+  const [filterLanguage, setFilterLanguage] = useState('');
+  const [locked, setLocked] = useState(true);
   const [noResults, setNoResults] = useState(false);
 
   const handleResultFetch = useCallback(async () => {
@@ -28,8 +28,8 @@ const CardContainer = ({ searchValue, error, setError, getSearchResults, setCurr
   const filterBy = (e) => {
     e.preventDefault()
     if (!locked) {
-      handleResultFetch();
-      setLocked(true);
+      handleResultFetch()
+      setLocked(true)
     }
   }
 
@@ -45,7 +45,7 @@ const CardContainer = ({ searchValue, error, setError, getSearchResults, setCurr
 
   useEffect(() => {
     if (!searchResults) {
-      handleResultFetch();
+      handleResultFetch() 
     }
   }, [handleResultFetch, searchResults])
 
