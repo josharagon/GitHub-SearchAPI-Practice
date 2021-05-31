@@ -3,7 +3,7 @@ import RepoCard from '../RepoCard/RepoCard.js';
 import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
-const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo }) => {
+const CardContainer = ({ searchValue, error, setError, getSearchResults, setCurrentRepo }) => {
   let allResults;
   let languageOptions;
   const [searchResults, setSearchResults] = useState('')
@@ -22,7 +22,7 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
           setNoResults((true))
         }
       })
-      .catch((error) => setError(error))
+      .catch((err) => setError(err))
   }, [filterLanguage, filterOrder, getSearchResults, searchValue, setError])
 
   const filterBy = (e) => {
@@ -33,7 +33,7 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
     }
   }
 
-  const handelNoResults = () => {
+  const handleNoResults = () => {
     if (noResults === true) {
       return (
         <h1 className="error-loading">No results found, <Link to="/">try a different search.</Link></h1>
@@ -98,9 +98,10 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
         <button className='rf-button' onClick={(e) => filterBy(e, filterLanguage, filterOrder)}>Filter</button>
       </div>
       <div className='card-container'>
-        {!allResults && !noResults && <h1 className='error-loading'>Loading</h1>}
+        {!allResults && !noResults && !error && <h1 className='error-loading'>Loading</h1>}
         {allResults}
-        {handelNoResults()}
+        {handleNoResults()}
+        {error && <h1 className='error-loading'>{`${error}`}</h1>}
       </div>
     </>
   )

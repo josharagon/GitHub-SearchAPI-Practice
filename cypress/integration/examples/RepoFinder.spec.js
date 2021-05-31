@@ -1,5 +1,6 @@
+import { wait } from "@testing-library/dom"
 
-context('Happy Paths', () => {
+describe('Happy Paths', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/')
   })
@@ -40,5 +41,21 @@ context('Happy Paths', () => {
     .get('button').click()
     .get('select').first().select('stars')
     .get('.rf-button').click()
+  })
+})
+
+describe('Sad Paths', () => {
+  beforeEach(() => {
+    cy.visit('http://localhost:3000/')
+  })
+
+  it('Should see proper error message if no results are returned', () => {
+    cy.fixture('emptyResult').then((testResult) => {
+      cy.intercept("https://api.github.com/search/repositories?q=nothing+language:%27%27&sort=%27%27", testResult)
+    })
+    cy.get('input').type('nothing')
+    .get('button').click()
+    cy.wait(5)
+    .get('.error-loading').contains('No results found')
   })
 })

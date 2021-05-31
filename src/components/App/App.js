@@ -12,6 +12,7 @@ import { Route, Switch } from 'react-router-dom'
 const App = () => {
   const [searchValue, setSearchValue] = useState('')
   const [currentRepo, setCurrentRepo] = useState({})
+  const [error, setError] = useState('')
 
   return (
     <>
@@ -33,6 +34,8 @@ const App = () => {
               <CardContainer searchValue={match.params.query}
                 getSearchResults={getSearchResults}
                 setCurrentRepo={setCurrentRepo}
+                error={error}
+                setError={setError}
               />
             </>
           )
