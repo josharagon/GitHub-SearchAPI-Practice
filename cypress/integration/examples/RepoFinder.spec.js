@@ -55,7 +55,7 @@ describe('Sad Paths', () => {
     })
     cy.get('input').type('nothing')
     .get('button').click()
-    cy.wait(5)
+    cy.wait(10)
     .get('.error-loading').contains('No results found')
   })
 

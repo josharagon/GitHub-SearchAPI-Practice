@@ -98,8 +98,8 @@ const CardContainer = ({ searchValue, error, setError, getSearchResults, setCurr
         <button className='rf-button' onClick={(e) => filterBy(e, filterLanguage, filterOrder)}>Filter</button>
       </div>
       <div className='card-container'>
-        {!allResults && !noResults && !error && <h1 className='error-loading'>Loading</h1>}
         {allResults}
+        {!allResults && !noResults && !error && <h1 className='error-loading'>Loading</h1>}
         {handleNoResults()}
         {error && <h1 className='error-loading'>{`${error}`}</h1>}
       </div>

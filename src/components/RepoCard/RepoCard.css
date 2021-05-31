@@ -39,3 +39,9 @@ a {
 .forks-stars > p {
   margin: 2px;
 }
+
+.card-language {
+  display: flex;
+  align-items: center;
+  flex-direction: column-reverse;
+}
