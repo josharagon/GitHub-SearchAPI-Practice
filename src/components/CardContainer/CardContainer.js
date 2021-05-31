@@ -1,9 +1,7 @@
 import './CardContainer.css';
 import RepoCard from '../RepoCard/RepoCard.js';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { handleError } from '@vue/runtime-core';
-
 
 const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo }) => {
   let allResults;
@@ -15,37 +13,17 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
   const [locked, setLocked] = useState(true)
   const [noResults, setNoResults] = useState(false);
 
-  useEffect(async () => {
-    if (!searchResults) {
-      await getSearchResults(searchValue)
-        .then((results) => setSearchResults(results.items))
-        .catch((error) => setError(error))
-      setNoResults((searchResults.length > 0) ? false : true)
-      console.log(searchResults.length > 0)
-    }
-  })
-
-  if (searchResults) {
-    allResults = searchResults.map(result => {
-      if (!repoLanguages.includes(result.language) && result.language !== null) {
-        setRepoLanguages([...repoLanguages, result.language])
-      }
-      return <RepoCard repo={result} key={result.full_name} setCurrentRepo={setCurrentRepo} />
-    })
-  }
-
-  languageOptions = repoLanguages.map(language => {
-    return (
-      <option key={language} value={language}>{language}</option>
-    )
-  })
+  const handleResultFetch = useCallback(async(searchValue, lang, sort) => {
+    await getSearchResults(searchValue, lang, sort)
+      .then((results) => setSearchResults(results.items))
+      .catch((error) => setError(error))
+    setNoResults((searchResults.length > 0) ? false : true)
+  }, [getSearchResults, searchResults.length, setError])
 
   const filterBy = (e, lang, sort) => {
     e.preventDefault()
     if (!locked) {
-      getSearchResults(searchValue, lang, sort)
-        .then((results) => setSearchResults(results.items))
-        .catch((error) => setError(error))
+      handleResultFetch(searchValue, lang, sort);
       setLocked(true);
     }
   }
@@ -60,8 +38,28 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
     }
   }
 
+  useEffect(() => {
+    if (!searchResults) {
+      handleResultFetch(searchValue, filterLanguage, filterOrder);
+    }
+  }, [handleResultFetch, searchResults, searchValue, filterOrder, filterLanguage])
 
+  //returns all repoCards & all returned languages in an array
+  if (searchResults) {
+    allResults = searchResults.map(result => {
+      if (!repoLanguages.includes(result.language) && result.language !== null) {
+        setRepoLanguages([...repoLanguages, result.language])
+      }
+      return <RepoCard repo={result} key={result.full_name} setCurrentRepo={setCurrentRepo} />
+    })
+  }
 
+//return language options
+  languageOptions = repoLanguages.map(language => {
+    return (
+      <option key={language} value={language}>{language}</option>
+    )
+  })
 
   return (
     <>
