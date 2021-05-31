@@ -14,7 +14,7 @@ const SingleRepoView = ({ repo }) => {
       <h4 className="go-back" onClick={() => history.goBack()}>Go Back ←</h4>
       <div className='top-section'>
         <div className='user-info'>
-          <img className='avatar' src={repo.owner.avatar_url}></img>
+          <img className='avatar' src={repo.owner.avatar_url} alt={`${repo.owner.login} avatar`}></img>
           <h2><span className='title'>creator: </span>{repo.owner.login}</h2>
         </div>
         <h2><span className='title'>repo:</span> {repo.full_name}</h2>

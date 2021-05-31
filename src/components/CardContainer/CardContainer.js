@@ -13,17 +13,24 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
   const [locked, setLocked] = useState(true)
   const [noResults, setNoResults] = useState(false);
 
-  const handleResultFetch = useCallback(async(searchValue, lang, sort) => {
-    await getSearchResults(searchValue, lang, sort)
-      .then((results) => setSearchResults(results.items))
+  const handleResultFetch = useCallback(async() => {
+      await getSearchResults(searchValue, filterLanguage, filterOrder)
+      .then((results) => {
+        if(results.items.length > 0){
+        setSearchResults(results.items)
+      } else {
+        setNoResults((true))
+      }
+      })
       .catch((error) => setError(error))
-    setNoResults((searchResults.length > 0) ? false : true)
-  }, [getSearchResults, searchResults.length, setError])
+      // setNoResults((searchResults.length > 0) ? false : true)
+      console.log(searchResults)
+  }, [filterLanguage, filterOrder, searchResults, getSearchResults, searchValue, setError])
 
-  const filterBy = (e, lang, sort) => {
+  const filterBy = (e) => {
     e.preventDefault()
     if (!locked) {
-      handleResultFetch(searchValue, lang, sort);
+      handleResultFetch();
       setLocked(true);
     }
   }
@@ -40,9 +47,9 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
 
   useEffect(() => {
     if (!searchResults) {
-      handleResultFetch(searchValue, filterLanguage, filterOrder);
+      handleResultFetch();
     }
-  }, [handleResultFetch, searchResults, searchValue, filterOrder, filterLanguage])
+  }, [handleResultFetch, searchResults])
 
   //returns all repoCards & all returned languages in an array
   if (searchResults) {
@@ -93,7 +100,7 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
         <button className='rf-button' onClick={(e) => filterBy(e, filterLanguage, filterOrder)}>Filter</button>
       </div>
       <div className='card-container'>
-        {!allResults && <h1 className='no-result'>Loading</h1>}
+        {!allResults && !noResults &&<h1 className='no-result'>Loading</h1>}
         {allResults}
         {handelNoResults()}
       </div>
