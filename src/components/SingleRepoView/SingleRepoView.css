@@ -11,6 +11,10 @@
   align-items: center;
 }
 
+.description {
+  overflow-y: auto;
+}
+
 .title {
   color: rgb(255, 210, 210);
 }

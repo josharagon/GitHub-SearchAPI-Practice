@@ -30,7 +30,7 @@ const SingleRepoView = ({ repo }) => {
           <h3><span className='title'>Open Issues: </span>{repo.open_issues}</h3>
         </div>
       </div>
-      <p>Description: {repo.description}</p>
+      <p className='description'><span className='title'>Description:</span> {repo.description}</p>
     </div>
   )
 }
