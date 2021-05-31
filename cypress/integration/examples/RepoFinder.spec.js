@@ -58,4 +58,19 @@ describe('Sad Paths', () => {
     cy.wait(5)
     .get('.error-loading').contains('No results found')
   })
+
+  it('Should give proper error message if a fetch requests fails', () => {
+    cy.intercept({
+      method: 'GET',
+      url: 'https://api.github.com/search/repositories?q=nothing+language:%27%27&sort=%27%27'
+    },
+      {
+        statusCode: 404,
+        body:''
+      })
+      cy.get('input').type('nothing')
+      .get('button').click()
+      cy.wait(5)
+      .get('.error-loading')
+  })
 })
