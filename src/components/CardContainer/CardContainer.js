@@ -3,14 +3,14 @@ import RepoCard from '../RepoCard/RepoCard.js';
 import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
-const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo }) => {
+const CardContainer = ({ searchValue, error, setError, getSearchResults, setCurrentRepo }) => {
   let allResults;
   let languageOptions;
-  const [searchResults, setSearchResults] = useState('')
-  const [repoLanguages, setRepoLanguages] = useState([])
-  const [filterOrder, setFilterOrder] = useState('')
-  const [filterLanguage, setFilterLanguage] = useState('')
-  const [locked, setLocked] = useState(true)
+  const [searchResults, setSearchResults] = useState('');
+  const [repoLanguages, setRepoLanguages] = useState([]);
+  const [filterOrder, setFilterOrder] = useState('');
+  const [filterLanguage, setFilterLanguage] = useState('');
+  const [locked, setLocked] = useState(true);
   const [noResults, setNoResults] = useState(false);
 
   const handleResultFetch = useCallback(async () => {
@@ -22,18 +22,18 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
           setNoResults((true))
         }
       })
-      .catch((error) => setError(error))
+      .catch((err) => setError(err))
   }, [filterLanguage, filterOrder, getSearchResults, searchValue, setError])
 
   const filterBy = (e) => {
     e.preventDefault()
     if (!locked) {
-      handleResultFetch();
-      setLocked(true);
+      handleResultFetch()
+      setLocked(true)
     }
   }
 
-  const handelNoResults = () => {
+  const handleNoResults = () => {
     if (noResults === true) {
       return (
         <h1 className="error-loading">No results found, <Link to="/">try a different search.</Link></h1>
@@ -45,7 +45,7 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
 
   useEffect(() => {
     if (!searchResults) {
-      handleResultFetch();
+      handleResultFetch() 
     }
   }, [handleResultFetch, searchResults])
 
@@ -98,9 +98,10 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
         <button className='rf-button' onClick={(e) => filterBy(e, filterLanguage, filterOrder)}>Filter</button>
       </div>
       <div className='card-container'>
-        {!allResults && !noResults && <h1 className='error-loading'>Loading</h1>}
         {allResults}
-        {handelNoResults()}
+        {!allResults && !noResults && !error && <h1 className='error-loading'>Loading</h1>}
+        {handleNoResults()}
+        {error && <h1 className='error-loading'>{`${error}`}</h1>}
       </div>
     </>
   )
