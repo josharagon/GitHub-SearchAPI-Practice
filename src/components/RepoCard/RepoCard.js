@@ -19,7 +19,7 @@ const RepoCard = ({ repo, setCurrentRepo }) => {
         </div>
         <h4 className='description'>{repo.description}</h4>
         <div className='bottom-section'>
-          {repo.language && <img src={`../assets/${repo.language}.png`} alt={repo.language}></img>}
+          {repo.language && <img src={`../assets/${repo.language}.png`} onError={(event) => event.target.style.display = 'none'} alt={repo.language}></img>}
           <p title='watchers'>👀 : {repo.watchers}</p>
         </div>
       </div>

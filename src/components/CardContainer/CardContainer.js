@@ -23,9 +23,7 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
       }
       })
       .catch((error) => setError(error))
-      // setNoResults((searchResults.length > 0) ? false : true)
-      console.log(searchResults)
-  }, [filterLanguage, filterOrder, searchResults, getSearchResults, searchValue, setError])
+  }, [filterLanguage, filterOrder, getSearchResults, searchValue, setError])
 
   const filterBy = (e) => {
     e.preventDefault()
@@ -41,7 +39,7 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
         <h1>No Results Found </h1>
       )
     } else {
-      return
+      return null
     }
   }
 
