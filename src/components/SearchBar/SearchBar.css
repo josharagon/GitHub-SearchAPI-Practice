@@ -38,3 +38,36 @@ input {
   display: flex;
   -webkit-tap-highlight-color: transparent;
 }
+
+@media only screen and (max-width: 750px) {
+  input {
+    padding-left: 35px;
+    font-size: 11px;
+  }
+
+  .search-icon{
+    height: 35px;
+    position: absolute;
+    top: 48%;
+    left: 25.9%;
+  }
+}
+
+
+@media only screen and (max-height: 750px) {
+  .search-icon{
+    top: 47.5%;
+  }
+}
+
+@media only screen and (max-height: 570px) {
+  .search-icon{
+    top: 46.5%;
+  }
+}
+
+@media only screen and (max-height: 470px) {
+  .search-icon{
+    top: 44%;
+  }
+}

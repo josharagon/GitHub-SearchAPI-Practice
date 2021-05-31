@@ -13,14 +13,14 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
   const [locked, setLocked] = useState(true)
   const [noResults, setNoResults] = useState(false);
 
-  const handleResultFetch = useCallback(async() => {
-      await getSearchResults(searchValue, filterLanguage, filterOrder)
+  const handleResultFetch = useCallback(async () => {
+    await getSearchResults(searchValue, filterLanguage, filterOrder)
       .then((results) => {
-        if(results.items.length > 0){
-        setSearchResults(results.items)
-      } else {
-        setNoResults((true))
-      }
+        if (results.items.length > 0) {
+          setSearchResults(results.items)
+        } else {
+          setNoResults((true))
+        }
       })
       .catch((error) => setError(error))
   }, [filterLanguage, filterOrder, getSearchResults, searchValue, setError])
@@ -59,7 +59,7 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
     })
   }
 
-//return language options
+  //return language options
   languageOptions = repoLanguages.map(language => {
     return (
       <option key={language} value={language}>{language}</option>
@@ -98,7 +98,7 @@ const CardContainer = ({ searchValue, setError, getSearchResults, setCurrentRepo
         <button className='rf-button' onClick={(e) => filterBy(e, filterLanguage, filterOrder)}>Filter</button>
       </div>
       <div className='card-container'>
-        {!allResults && !noResults &&<h1 className='error-loading'>Loading</h1>}
+        {!allResults && !noResults && <h1 className='error-loading'>Loading</h1>}
         {allResults}
         {handelNoResults()}
       </div>

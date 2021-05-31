@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   overflow-wrap: break-word;
+  padding: 10px;
 }
 
 a {
