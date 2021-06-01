@@ -19,7 +19,11 @@ const SingleRepoView = ({ repo }) => {
           <h3><span className='title'>🍴fork Count</span>: {repo.forks}</h3>
           <h3><span className='title'>👀 Watch Count:</span> {repo.watchers}</h3>
           <h3><span className='title'>⭐️ Starred Count:</span> {repo.stargazers_count}</h3>
+          <div className='language-sr'>
           <h3>{repo.language}</h3>
+          <img className='lang-img' src={`../assets/${repo.language}.png`} onError={(event) => event.target.style.display = 'none'} alt={repo.language}>
+          </img>
+          </div>
           <h3><span className='title'>Open Issues: </span>{repo.open_issues}</h3>
         </div>
         <div className='right-section'>
