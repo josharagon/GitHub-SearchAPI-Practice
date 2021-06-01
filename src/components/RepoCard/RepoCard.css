@@ -29,6 +29,10 @@ a {
   align-items: center;
 }
 
+.description {
+  overflow: auto;
+}
+
 .forks-stars {
   display: flex;
   justify-content:space-evenly;

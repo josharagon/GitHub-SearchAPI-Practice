@@ -4,17 +4,27 @@
   font-size: 100%;
   height: 100%;
   overflow-y: auto;
-
 }
 
-.top-section, .middle-section {
+.middle-section {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  padding: 0 20px 0 20px;
 }
 
-.description {
+.left-section, .right-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 50%;
+}
+
+.description-sr {
   overflow-y: auto;
+  width: 75%;
+  height: 300px;
 }
 
 .title {
@@ -38,20 +48,35 @@
 .go-back {
   text-align: left;
   cursor: pointer;
+  padding-left: 3%;
 }
 
+.description-sr {
+  width: 100%;
+  overflow-x: hidden;
+  margin-bottom: 40px;
+}
+
+.language-sr {
+  display: flex;
+  align-items: center;
+}
+
+.lang-img {
+  height: 30px;
+}
 
 @media only screen and (max-width: 750px) {
   .single-repo-view {
-    font-size: 80%;
+    font-size: 90%;
   }
-  .top-section, .middle-section {
+
+  .middle-section {
     display: flex;
     flex-direction: column;
-    align-self: center;
-    align-content: center;
   }
   .repo-stats, .language-issues, .user-info {
     align-self: center;
   }
+
 }
