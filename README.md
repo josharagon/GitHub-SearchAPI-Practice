@@ -17,12 +17,12 @@ $cd repofinder
 #### 3. Install Dependencies
 
 `
-npm i 
+$npm i 
 `
 #### 4. Start application
 
 `
-npm start
+$npm start
 `
 
 
@@ -35,6 +35,17 @@ npm start
 #### 3. If no results are found you will be given an option to return to the search bar and try again. ![no results](https://gyazo.com/6bd59e78d85154226a455a8efd8979ae.gif)
 
 #### 4. In the case you do get results, you have the options to filter by best match(default), star count, or fork count. You can also filter by language to just receive 1 specific language results. ![filter results](https://gyazo.com/bbf007b7c270ac15fa0504dad137fde1.gif)
+
+#### 5. Click on any card to view a more detailed view of that specific card. ![detailed view](https://gyazo.com/8fdbf3bd1cf66219221d6afada78bbb6.gif)
+
+## Testing 
+#### Due to the size of this app I didn't go crazy on the testing, just covered the scenarios that would be most seen by users.
+
+1. To view tests on your end run cypress in your terminal.
+
+`$npx cypress run`
+
+![test results](https://gyazo.com/7ba4663177e2cc1d937ea051d6d31a8f.png)
 
 ## Wire Frames
 ![wireframe1](https://gyazo.com/0dcf887f9d6995124d73ab3ab3916881.png)
