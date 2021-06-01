@@ -10,9 +10,9 @@ import { Route, Switch } from 'react-router-dom';
 
 
 const App = () => {
-  const [searchValue, setSearchValue] = useState('')
-  const [currentRepo, setCurrentRepo] = useState({})
-  const [error, setError] = useState('')
+  const [searchValue, setSearchValue] = useState('');
+  const [currentRepo, setCurrentRepo] = useState({});
+  const [error, setError] = useState('');
 
   return (
     <>

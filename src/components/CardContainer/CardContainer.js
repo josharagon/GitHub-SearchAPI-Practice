@@ -36,7 +36,7 @@ const CardContainer = ({ searchValue, error, setError, getSearchResults, setCurr
   const handleNoResults = () => {
     if (noResults === true) {
       return (
-        <h1 className="error-loading">No results found, <Link to="/">try a different search.</Link></h1>
+        <h1 className='error-loading'>No results found, <Link to='/'>try a different search.</Link></h1>
       )
     } else {
       return null
@@ -45,7 +45,7 @@ const CardContainer = ({ searchValue, error, setError, getSearchResults, setCurr
 
   useEffect(() => {
     if (!searchResults) {
-      handleResultFetch() 
+      handleResultFetch()
     }
   }, [handleResultFetch, searchResults])
 
@@ -69,28 +69,28 @@ const CardContainer = ({ searchValue, error, setError, getSearchResults, setCurr
   return (
     <>
       <Link to='/'>
-        <h1 className="header">RepoFinder</h1>
+        <h1 className='header'>RepoFinder</h1>
       </Link>
-      <div className="filter-row">
-        <div className="filter-forms">
-          <form className="dropdown" value={filterOrder} onChange={(e) => {
+      <div className='filter-row'>
+        <div className='filter-forms'>
+          <form className='dropdown' value={filterOrder} onChange={(e) => {
             setFilterOrder(e.target.value)
             setLocked(false)
           }}>
             <label>Filter Order:</label>
-            <select name="filter" id="filter">
-              <option defaultValue value="">Best Match</option>
-              <option value="stars">Starred Count</option>
-              <option value="forks">Fork Count</option>
+            <select name='filter' id='filter'>
+              <option defaultValue value=''>Best Match</option>
+              <option value='stars'>Starred Count</option>
+              <option value='forks'>Fork Count</option>
             </select>
           </form>
-          <form className="dropdown" value={filterLanguage} onChange={(e) => {
+          <form className='dropdown' value={filterLanguage} onChange={(e) => {
             setFilterLanguage(e.target.value)
             setLocked(false)
           }}>
             <label>Language:</label>
-            <select name="language" id="language">
-              <option defaultValue value="">All</option>
+            <select name='language' id='language'>
+              <option defaultValue value=''>All</option>
               {languageOptions}
             </select>
           </form>

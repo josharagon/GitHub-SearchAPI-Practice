@@ -2,7 +2,7 @@ import React from 'react';
 import './SearchBar.css';
 
 const SearchBar = ({ searchValue, setSearchValue }) => {
-  
+
   const searchRepositories = (e) => {
     if (searchValue) {
       e.preventDefault()
