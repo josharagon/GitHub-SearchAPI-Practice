@@ -36,7 +36,7 @@ $npm start
 
 #### 4. In the case you do get results, you have the options to filter by best match(default), star count, or fork count. You can also filter by language to just receive 1 specific language results. ![filter results](https://gyazo.com/bbf007b7c270ac15fa0504dad137fde1.gif)
 
-#### 5. Click on any card to view a more detailed view of that specific card. ![detailed view](https://gyazo.com/8fdbf3bd1cf66219221d6afada78bbb6.gif)
+#### 5. Click on any card to view a more detailed view of that specific card. ![detailed view](https://gyazo.com/008f75add3c96a2aaa58ab5e6e32a2aa.gif)
 
 ## Testing 
 #### Due to the size of this app I didn't go crazy on the testing, just covered the scenarios that would be most seen by users.
